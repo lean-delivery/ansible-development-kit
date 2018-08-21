@@ -16,7 +16,14 @@ platforms:
     region: EPAM-BY2
     wait_timeout: 1800
     groups:
-      - ansible_role_docker_ct
+      - rhel_family
+  - name: test-epc-ubuntu1804-{{ cookiecutter.role_name }}
+    image: Ubuntu18.04_64-bit
+    shape: small
+    region: EPAM-BY2
+    wait_timeout: 1800
+    groups:
+      - debian_family
 provisioner:
   name: ansible
   playbooks:
