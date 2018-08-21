@@ -19,6 +19,7 @@ platforms:
       - ansible_role_docker_ct
 provisioner:
   name: ansible
+  playbooks:
     create: ../resources/provisioning/create.yml
     prepare: ../resources/provisioning/prepare.yml
     destroy: ../resources/provisioning/destroy.yml
