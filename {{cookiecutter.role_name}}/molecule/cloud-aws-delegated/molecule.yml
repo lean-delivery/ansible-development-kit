@@ -1,0 +1,37 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: delegated
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/yamllint.yml
+platforms:
+  - name: test-aws-centos7-{{ cookiecutter.role_name }}
+    image: CentOS7_64-bit
+    shape: small
+    region: AWS-EUCENTRAL
+    wait_timeout: 1800
+    groups:
+      - ansible_role_docker_ct
+provisioner:
+  name: ansible
+  config_options:
+    ssh_connection:
+      control_path: "/var/ans/%%h"
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_LIBRARY:
+      /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
+scenario:
+  name: cloud-aws-centos
+verifier:
+  name: testinfra
+  options:
+    verbose: True
+  lint:
+    name: flake8

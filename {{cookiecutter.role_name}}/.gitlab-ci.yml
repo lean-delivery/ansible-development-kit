@@ -1,0 +1,30 @@
+---
+# Run all tests
+stages:
+  - lint
+  - deployment test
+
+before_script:
+  - ansible --version
+  - molecule --version
+
+variables:
+  GET_SOURCES_ATTEMPTS: "5"
+
+AWS {{ cookiecutter.role_name }}:
+  variables:
+    EPC_REGION: AWS-EUCENTRAL
+  stage: deployment test
+  script:
+    - molecule test -s cloud-aws-delegated
+  tags:
+    - delegated
+
+EPC {{ cookiecutter.role_name }}:
+  variables:
+    EPC_REGION: EPAM-BY2
+  stage: deployment test
+  script:
+    - molecule test -s cloud-epc-delegated
+  tags:
+    - delegated

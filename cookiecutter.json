@@ -1,0 +1,19 @@
+{
+    "role_name": "OVERRIDEN",
+    "scenario_name": "OVERRIDEN",
+    "license" : ["Apache", "MIT", "BSD-3", "GPLv3"],
+    "author_name" : "Lean Delivery Team <team@lean-delivery.com>",
+    "molecule_directory": "molecule",
+    "verifier_directory": "tests",
+    "docker_privileged": "True",
+    "dependency_name": "galaxy",
+    "lint_name": "yamllint",
+    "provisioner_name": "ansible",
+    "provisioner_lint_name": "ansible-lint",
+    "verifier_name": "testinfra",
+    "verifier_lint_name": "flake8",
+    "min_ansible_version": "2.5",
+    "company_name": "EPAM Systems",
+    "role_description": "Yet Another Ansible Role From Lean Delivery",
+    "issue_tracker_url": "https://github.com/lean-delivery/ansible-role-{{ cookiecutter.role_name }}/issues"
+}
