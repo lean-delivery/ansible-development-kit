@@ -8,7 +8,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-file: .yamllint.yml
+    config-file: .yamllint
 platforms:
   - name: test-aws-centos7-{{ cookiecutter.role_name }}
     image: CentOS7_64-bit
