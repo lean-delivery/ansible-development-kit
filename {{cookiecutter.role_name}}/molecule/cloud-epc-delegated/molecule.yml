@@ -28,7 +28,7 @@ provisioner:
     ANSIBLE_LIBRARY:
       /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
 scenario:
-  name: cloud-aws-centos
+  name: cloud-epc-delegated
 verifier:
   name: testinfra
   options:
