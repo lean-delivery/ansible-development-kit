@@ -6,7 +6,7 @@ driver:
 lint:
   name: {{ cookiecutter.lint_name }}
   options:
-    config-file: ../../.yamllint.yml
+    config-file: .yamllint.yml
 platforms:
   - name: test-docker-centos7-{{ cookiecutter.role_name }}
     image: leandelivery/docker-systemd:centos7
