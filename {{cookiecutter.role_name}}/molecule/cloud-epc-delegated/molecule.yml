@@ -19,6 +19,9 @@ platforms:
       - ansible_role_docker_ct
 provisioner:
   name: ansible
+    create: ../resources/provisioning/create.yml
+    prepare: ../resources/provisioning/prepare.yml
+    destroy: ../resources/provisioning/destroy.yml
   config_options:
     ssh_connection:
       control_path: "/var/ans/%%h"

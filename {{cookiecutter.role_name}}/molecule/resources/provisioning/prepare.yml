@@ -13,7 +13,9 @@
       become: True
       changed_when: False
     - name: Install python for Ansible
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal python-zipstream)
+      raw: |
+        (command -v apt && test ! -e /usr/bin/python) && (apt -y update && apt install -y python-minimal python-zipstream)
+        (command -v yum && test ! -e /usr/bin/python) && (yum install -y python)
       become: True
       changed_when: False
 {%- endraw %}
