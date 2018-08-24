@@ -21,7 +21,21 @@ platforms:
     capabilities:
       - SYS_ADMIN
     groups:
-      - ansible_role_docker_ct
+      - rhel_family
+  - name: test-docker-ubuntu1804-{{ cookiecutter.role_name }}
+    image: leandelivery/docker-systemd:ubuntu-18.04
+    privileged: True
+    security_opts:
+      - seccomp=unconfined
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tmpfs:
+      - /tmp
+      - /run
+    capabilities:
+      - SYS_ADMIN
+    groups:
+      - debian_family
 provisioner:
   name: {{ cookiecutter.provisioner_name }}
   lint:
@@ -30,5 +44,8 @@ scenario:
   name: default
 verifier:
   name: {{ cookiecutter.verifier_name }}
+  options:
+    verbose: true
+  directory: ../resources/tests/
   lint:
     name: {{ cookiecutter.verifier_lint_name }}

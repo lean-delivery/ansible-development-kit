@@ -1,12 +1,12 @@
 ---
 dependency:
-  name: galaxy
+  name: {{ cookiecutter.dependency_name }}
   options:
     role-file: requirements.yml
 driver:
   name: delegated
 lint:
-  name: yamllint
+  name: {{ cookiecutter.lint_name }}
   options:
     config-file: .yamllint
 platforms:
@@ -34,15 +34,16 @@ provisioner:
     ssh_connection:
       control_path: "/var/ans/%%h"
   lint:
-    name: ansible-lint
+    name: {{ cookiecutter.provisioner_lint_name }}
   env:
     ANSIBLE_LIBRARY:
       /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
 scenario:
   name: cloud-aws-delegated
 verifier:
-  name: testinfra
+  name: {{ cookiecutter.verifier_name }}
   options:
-    verbose: True
+    verbose: true
+  directory: ../resources/tests/
   lint:
-    name: flake8
+    name: {{ cookiecutter.verifier_lint_name }}

@@ -8,7 +8,7 @@
       raw: |
         test -e /var/lib/dpkg/lock && rm -f /var/lib/dpkg/lock
         test -e /var/cache/apt/archives/lock && rm -f /var/cache/apt/archives/lock
-        test -e /var/lib/dpkg/lock && rm -f /var/lib/dpkg/lock
+        test -e /var/lib/apt/lists/lock && rm -f /var/lib/apt/lists/lock
         test -e /usr/bin/dpkg && dpkg --configure -a
       become: True
       changed_when: False
