@@ -10,21 +10,12 @@ lint:
 platforms:
   - name: test-docker-centos7-{{ cookiecutter.role_name }}
     image: leandelivery/docker-systemd:centos7
-    privileged: True
-    security_opts:
-      - seccomp=unconfined
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    tmpfs:
-      - /tmp
-      - /run
-    capabilities:
-      - SYS_ADMIN
+    privileged: {{ cookiecutter.docker_privileged }}
     groups:
       - rhel_family
   - name: test-docker-ubuntu1804-{{ cookiecutter.role_name }}
     image: leandelivery/docker-systemd:ubuntu-18.04
-    privileged: True
+    privileged: {{ cookiecutter.docker_privileged }}
     security_opts:
       - seccomp=unconfined
     volumes:
