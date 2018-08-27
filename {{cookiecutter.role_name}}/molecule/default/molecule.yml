@@ -11,6 +11,8 @@ platforms:
   - name: test-docker-centos7-{{ cookiecutter.role_name }}
     image: leandelivery/docker-systemd:centos7
     privileged: {{ cookiecutter.docker_privileged }}
+    env:
+      TERM: xterm
     groups:
       - rhel_family
   - name: test-docker-ubuntu1804-{{ cookiecutter.role_name }}
@@ -25,6 +27,8 @@ platforms:
       - /run
     capabilities:
       - SYS_ADMIN
+    env:
+      TERM: xterm
     groups:
       - debian_family
 provisioner:
