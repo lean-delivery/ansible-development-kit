@@ -36,8 +36,7 @@ provisioner:
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
   env:
-    ANSIBLE_LIBRARY:
-      /home/gitlab-runner/.local/lib/python2.7/site-packages/epam_ansible
+    ANSIBLE_LIBRARY: ${ANSIBLE_LIBRARY}
 scenario:
   name: cloud-aws-delegated
 verifier:
