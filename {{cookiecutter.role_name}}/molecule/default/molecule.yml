@@ -1,6 +1,8 @@
 ---
 dependency:
   name: {{ cookiecutter.dependency_name }}
+  options:
+    role-file: requirements.yml
 driver:
   name: docker
 lint:
