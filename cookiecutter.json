@@ -1,6 +1,6 @@
 {
     "role_name": "default_role",
-    "license" : ["Apache2", "MIT", "BSD-3", "GPLv3"],
+    "license" : ["Apache", "MIT", "BSD-3", "GPLv3"],
     "author_name" : "Lean Delivery Team <team@lean-delivery.com>",
     "docker_privileged": "True",
     "dependency_name": "galaxy",
