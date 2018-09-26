@@ -34,6 +34,7 @@
       register: epc_jobs
       until: epc_jobs.finished
       retries: 300
+      delay: 20
       with_items: "{{ server.results }}"
 
     # Mandatory configuration for Molecule to function.
