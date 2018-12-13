@@ -18,7 +18,7 @@ Ansible lint:
   script:
     - cookiecutter -f --no-input .
     - cd default_role
-    - ansible-lint -c .ansible-lint `find . -regex ".*\.\(yml\)"`
+    - ansible-lint . -c .ansible-lint
   after_script:
     - rm -rf ~/ansible-lint-rules
   tags:
