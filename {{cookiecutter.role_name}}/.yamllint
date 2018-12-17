@@ -24,7 +24,9 @@ rules:
   comments-indentation: disable
   indentation: disable
   key-duplicates: enable
-  line-length: disable
+  line-length:
+    max: 150
+    level: warning
   new-lines: disable
 
 ignore: |
