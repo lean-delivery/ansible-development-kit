@@ -27,7 +27,6 @@ rules:
   line-length:
     max: 150
     level: warning
-  new-line-at-end-of-file: enable
   new-lines: disable
 
 ignore: |
