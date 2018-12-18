@@ -19,7 +19,7 @@ rules:
     level: error
   hyphens:
     level: error
-  # truthy: disable
+  truthy: disable
   comments: disable
   comments-indentation: disable
   indentation: disable
