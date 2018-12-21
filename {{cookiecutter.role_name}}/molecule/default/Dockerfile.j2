@@ -14,5 +14,6 @@ RUN if [ $(command -v apt-get) ]; then apt-get update && apt-get install -y pyth
     elif [ $(command -v apk) ]; then apk update && apk add --no-cache python sudo bash ca-certificates; \
     elif [ $(command -v xbps-install) ]; then xbps-install -Syu && xbps-install -y python sudo bash ca-certificates && xbps-remove -O; fi
 
-RUN cp /bin/true /sbin/agetty; cp /bin/true /sbin/mingetty
+RUN if [ -f /sbin/agetty ]; then cp /bin/true /sbin/agetty; \
+    elif [ -f /sbin/mingetty ]; then cp /bin/true /sbin/mingetty; fi
 {%- endraw %}
