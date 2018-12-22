@@ -3,13 +3,15 @@ ansible-development-kit
 
 ## How to use:
 
-1. pip install cookiecutter
+pip install cookiecutter
 
 ### Create a new role
 
-1. cookiecutter https://github.com/lean-delivery/ansible-development-kit
+cookiecutter https://github.com/lean-delivery/ansible-development-kit
+
 _Alternative way:_
-1. molecule init template --url https://github.com/lean-delivery/ansible-development-kit
+
+molecule init template --url https://github.com/lean-delivery/ansible-development-kit
 
 ### Update an existing role
 
@@ -18,3 +20,15 @@ _Alternative way:_
 1. git status
 1. git add . -p
 1. git commit -m "Updated by cookiecutter and ansible-development-kit"
+
+In order not to provide the same answers for cookecutter's questions it makes sense to put in the role's directory a config file `.cookiecutter.yml` like this:
+
+```yaml
+---
+default_context:
+  role_name: ansible-role-example
+```
+
+and run cookiecutter the following way:
+
+cookiecutter https://github.com/lean-delivery/ansible-development-kit --output-dir .. --overwrite-if-exists --config-file .cookiecutter.yml --no-input
