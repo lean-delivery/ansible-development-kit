@@ -31,6 +31,7 @@ AWS role from cookiecutter test:
   script:
     - cookiecutter -f --no-input .
     - cd default_role
+    - sed -i 's/ansible-role-//' molecule/cloud-aws-delegated/playbook.yml
     - molecule test -s cloud-aws-delegated
   tags:
     - delegated
@@ -42,6 +43,7 @@ EPC role from cookiecutter test:
   script:
     - cookiecutter -f --no-input .
     - cd default_role
+    - sed -i 's/ansible-role-//' molecule/cloud-epc-delegated/playbook.yml
     - molecule test -s cloud-epc-delegated
   tags:
     - delegated

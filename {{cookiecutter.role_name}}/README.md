@@ -2,7 +2,7 @@
 =========
 [![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-role-{{ cookiecutter.role_name }}/master/LICENSE)
 [![Build Status](https://travis-ci.org/lean-delivery/ansible-role-{{ cookiecutter.role_name }}.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-role-{{ cookiecutter.role_name }})
-[![Galaxy](https://img.shields.io/badge/galaxy-lean_delivery.{{ cookiecutter.role_name }}-blue.svg)](https://galaxy.ansible.com/lean_delivery/{{ cookiecutter.role_name }})
+[![Galaxy](https://img.shields.io/badge/galaxy-lean__delivery.{{ cookiecutter.role_name }}-blue.svg)](https://galaxy.ansible.com/lean_delivery/{{ cookiecutter.role_name }})
 ![Ansible](https://img.shields.io/ansible/role/d/role_id.svg)
 ![Ansible](https://img.shields.io/badge/dynamic/json.svg?label=min_ansible_version&url=https%3A%2F%2Fgalaxy.ansible.com%2Fapi%2Fv1%2Froles%2Frole_id%2F&query=$.min_ansible_version)
 

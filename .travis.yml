@@ -21,6 +21,7 @@ install:
 script:
   - cookiecutter --no-input .
   - cd default_role
+  - sed -i 's/ansible-role-//' molecule/default/playbook.yml
   - ansible-lint . -c .ansible-lint
   - molecule test
 
