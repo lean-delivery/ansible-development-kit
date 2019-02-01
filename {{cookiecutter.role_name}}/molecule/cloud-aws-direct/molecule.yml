@@ -1,0 +1,116 @@
+---
+dependency:
+  name: {{ cookiecutter.dependency_name }}
+  options:
+    role-file: requirements.yml
+driver:
+  name: ec2
+lint:
+  name: {{ cookiecutter.lint_name }}
+  options:
+    config-file: .yamllint
+platforms:
+  - name: test-aws-centos7-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_centos7 }}
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: centos
+    groups:
+      - rhel_family
+
+  - name: test-aws-centos6-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_centos6 }}
+    instance_type: m4.large
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: centos
+    groups:
+     - rhel_family
+
+  - name: test-aws-ubuntu16-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_ubuntu16 }}
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    security_group_name:
+      - default
+    spot_price: {{ cookiecutter.spot_price }}
+    wait_timeout: 1800
+    ssh_user: ubuntu
+    groups:
+      - debian_family
+
+  - name: test-aws-ubuntu18-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_ubuntu18 }}
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    security_group_name:
+      - default
+    spot_price: {{ cookiecutter.spot_price }}
+    wait_timeout: 1800
+    ssh_user: ubuntu
+    groups:
+      - debian_family
+
+  - name: test-aws-Debian9-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_debian9 }}
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: admin
+    groups:
+      - debian_family
+
+  - name: test-aws-Debian8-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_debian8 }}
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: False
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: admin
+    groups:
+      - debian_family
+
+provisioner:
+  name: ansible
+  log: False
+  playbooks:
+    create: ../resources/provisioning/AWS/create.yml
+    prepare: ../resources/provisioning/AWS/prepare.yml
+    destroy: ../resources/provisioning/AWS/destroy.yml
+  lint:
+    name: {{ cookiecutter.provisioner_lint_name }}
+  env:
+    ANSIBLE_LIBRARY: ${ANSIBLE_LIBRARY}
+scenario:
+  name: cloud-aws-direct
+verifier:
+  name: {{ cookiecutter.verifier_name }}
+  options:
+    verbose: true
+  directory: ../resources/tests/
+  lint:
+    name: {{ cookiecutter.verifier_lint_name }}

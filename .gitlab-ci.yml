@@ -22,19 +22,31 @@ Ansible lint:
   after_script:
     - rm -rf ~/ansible-lint-rules
   tags:
-    - delegated
+    - aws
 
 AWS role from cookiecutter test:
   variables:
-    EPC_REGION: AWS-EUCENTRAL
+    AWS_REGION: us-east-1
   stage: deployment test
   script:
     - cookiecutter -f --no-input .
     - cd default_role
-    - sed -i 's/ansible-role-//' molecule/cloud-aws-delegated/playbook.yml
-    - molecule test -s cloud-aws-delegated
+    - sed -i 's/ansible-role-//' molecule/cloud-aws-direct/playbook.yml
+    - molecule test -s cloud-aws-direct
   tags:
-    - delegated
+    - aws
+
+AWS Windows role from cookiecutter test:
+  variables:
+    AWS_REGION: us-east-1
+  stage: deployment test
+  script:
+    - cookiecutter -f --no-input .
+    - cd default_role
+    - sed -i 's/ansible-role-//' molecule/cloud-aws-windows/playbook.yml
+    - molecule test -s cloud-aws-windows
+  tags:
+    - aws
 
 EPC role from cookiecutter test:
   variables:
