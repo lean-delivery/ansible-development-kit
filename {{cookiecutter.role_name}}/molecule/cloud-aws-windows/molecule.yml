@@ -17,7 +17,7 @@ platforms:
     instance_type: {{ cookiecutter.instance_type }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: False
-    spot_price: 0.2
+    spot_price: 0.14
     aws_sec_group:
       - default
     wait_timeout: 1800

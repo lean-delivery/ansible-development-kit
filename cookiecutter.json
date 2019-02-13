@@ -26,7 +26,7 @@
     "image_ubuntu18": "ami-012fd5eb46f56731f",
     "image_debian9": "ami-003f19e0e687de1cd",
     "image_debian8": "ami-b14ba7a7",
-    "image_windows2016": "ami-0f4c7e570f044b46f",
+    "image_windows2016": "ami-07a29e78aeb420471",
     "instance_type": "m5.large",
     "spot_price": "0.04"
 }
