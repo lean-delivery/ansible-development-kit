@@ -24,6 +24,3 @@ script:
   - sed -i 's/ansible-role-//' molecule/default/playbook.yml
   - ansible-lint . -c .ansible-lint
   - molecule test
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
