@@ -17,7 +17,7 @@ Ansible lint:
     - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
   script:
     - cookiecutter -f --no-input .
-    - cd default_role
+    - cd ansible-role-default_role
     - ansible-lint . -c .ansible-lint
   after_script:
     - rm -rf ~/ansible-lint-rules
@@ -30,8 +30,7 @@ AWS role from cookiecutter test:
   stage: deployment test
   script:
     - cookiecutter -f --no-input .
-    - cd default_role
-    - sed -i 's/ansible-role-//' molecule/cloud-aws-direct/playbook.yml
+    - cd ansible-role-default_role
     - molecule test -s cloud-aws-direct
   tags:
     - aws
@@ -42,8 +41,7 @@ AWS Windows role from cookiecutter test:
   stage: deployment test
   script:
     - cookiecutter -f --no-input .
-    - cd default_role
-    - sed -i 's/ansible-role-//' molecule/cloud-aws-windows/playbook.yml
+    - cd ansible-role-default_role
     - molecule test -s cloud-aws-windows
   tags:
     - aws
@@ -54,8 +52,7 @@ EPC role from cookiecutter test:
   stage: deployment test
   script:
     - cookiecutter -f --no-input .
-    - cd default_role
-    - sed -i 's/ansible-role-//' molecule/cloud-epc-delegated/playbook.yml
+    - cd ansible-role-default_role
     - molecule test -s cloud-epc-delegated
   tags:
     - delegated
