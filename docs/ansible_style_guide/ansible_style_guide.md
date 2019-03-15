@@ -7,6 +7,7 @@ permalink: /docs/ansible_style_guide
 ---
 
 # Ansible Style Guide
+{: .no_toc }
 
 This document defines code guidelines for Ansible roles included in lean-delivery project. These guidelines are provided for Ansible role authors and contributors to ensure that the code of Ansible roles included in the project is following the agreed conventions. Following these conventions makes code better in terms of readability and simplifies further support and development.
 
@@ -21,6 +22,7 @@ This document defines code guidelines for Ansible roles included in lean-deliver
 You should follow the [Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) defined by the Ansible documentation when developing playbooks.
 
 ### Why?
+{: .no_toc }
 
 The Ansible developers have a good understanding of how the playbooks work and where they look for certain files. Following these practices will avoid a lot of problems.
 
@@ -33,6 +35,7 @@ The script examples are inconsistent in style throughout the Ansible documentati
 All YAML files (regardless of their association with Ansible or not) should begin with `---` to define the document start. 
 
 ### Why?
+{: .no_toc }
 
 It's better processed by linters and parsers. It allows easily indicate start of new yaml objects and documents.
 
@@ -41,6 +44,7 @@ It's better processed by linters and parsers. It allows easily indicate start of
 You should always end your files with a newline.
 
 ### Why?
+{: .no_toc }
 
 This is common Unix best practice, and avoids any prompt misalignment when printing files in a terminal.
 
@@ -50,6 +54,7 @@ This is common Unix best practice, and avoids any prompt misalignment when print
 Single quotes are preferrable to double since they are shorter and require less efforts to support, especially for roles supporting Windows.
 
 ### Double quotes should be used in the following cases:
+{: .no_toc }
 
 1.  When they are nested within single quotes (e.g. Jinja map reference)
 
@@ -83,6 +88,7 @@ Single quotes are preferrable to double since they are shorter and require less 
     ```
 
 ### Why?
+{: .no_toc }
 
 Even though strings are the default type for YAML, syntax highlighting looks better when explicitly set types. This also helps troubleshoot malformed strings when they should be properly escaped to have the desired effect.
 
