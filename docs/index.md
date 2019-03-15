@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ansible Development Kit
-nav_order: 5
+nav_order: 1
 ---
 
 # Ansible Development Kit
