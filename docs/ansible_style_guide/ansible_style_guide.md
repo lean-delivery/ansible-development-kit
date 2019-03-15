@@ -2,7 +2,7 @@
 layout: default
 title: Ansible Styleguide
 nav_order: 3
-has_children: true
+has_children: false
 permalink: /docs/ansible_style_guide
 ---
 
@@ -17,6 +17,8 @@ This document defines code guidelines for Ansible roles included in lean-deliver
 *  TOC
 {:toc}
 
+---
+
 ## Practices
 
 You should follow the [Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) defined by the Ansible documentation when developing playbooks.
@@ -30,6 +32,8 @@ The Ansible developers have a good understanding of how the playbooks work and w
 
 The script examples are inconsistent in style throughout the Ansible documentation; the purpose of this document is to define a consistent style that can be used throughout Ansible scripts to create robust, readable code.
 
+---
+
 ## Start of Files
 
 All YAML files (regardless of their association with Ansible or not) should begin with `---` to define the document start. 
@@ -39,6 +43,8 @@ All YAML files (regardless of their association with Ansible or not) should begi
 
 It's better processed by linters and parsers. It allows easily indicate start of new yaml objects and documents.
 
+---
+
 ## End of Files
 
 You should always end your files with a newline.
@@ -47,6 +53,8 @@ You should always end your files with a newline.
 {: .no_toc }
 
 This is common Unix best practice, and avoids any prompt misalignment when printing files in a terminal.
+
+---
 
 ## Quotes
 
@@ -92,6 +100,8 @@ Single quotes are preferrable to double since they are shorter and require less 
 
 Even though strings are the default type for YAML, syntax highlighting looks better when explicitly set types. This also helps troubleshoot malformed strings when they should be properly escaped to have the desired effect.
 
+---
+
 ## Long strings
 
 If you write a long string containing whitespaces, it's preferrable to use the "Literal Block Scalar" style and omit all special quoting. Values can span multiple lines using `|` or `>`. Spanning multiple lines using a "Literal Block Scalar" (`|`) will include the newlines and any trailing spaces. Using a "Folded Block Scalar" (`>`) will fold newlines to spaces; it’s used to make what would otherwise be a very long line easier to read and edit:
@@ -112,6 +122,7 @@ If you need to preserve line breaks use the following approach:
       This role does not support '{{ ansible_os_family }}' platform.
         Please contact support@lean-delivery.com {% endraw %}
 ```
+---
 
 ## Booleans
 
@@ -137,6 +148,8 @@ Ansible supports many different ways to specify a boolean value: `True/False`, `
 
 ### Why?
 The main reasoning behind this is that Python have same convention for boolean values. 
+
+---
 
 ## Colon spacing
 
@@ -164,6 +177,8 @@ Use only one space after the colon when designating a key value pair
 ### Why?
 
 It's easier to edit avoiding extra aligning efforts for colons.
+
+---
 
 ## Key-Value pairs
 
@@ -206,6 +221,8 @@ Ansible allows two types of YAML syntax:
 The legacy key=value syntax is used on the command line for adhoc commands. The use of this style within playbooks and roles is a bad practice making playbooks harder to read and support. 
 
 Structured map style makes code more compact in terms of line length and that makes code more easy to read. Each module parameter is places on its own line making possible to comment parameters independently. YAML syntax highlighting works better for this format allowing key/value detection, constants highlighting etc.
+
+---
 
 ## Variable Names
 
