@@ -47,7 +47,6 @@ Single quotes are preferrable to double since they are shorter and require less 
 
 1. When they are nested within single quotes (e.g. Jinja map reference)
 
-<!-- {% highlight yaml %} -->
     ```yaml
     - name: start all services
       service:
@@ -56,7 +55,6 @@ Single quotes are preferrable to double since they are shorter and require less 
         enabled: True
       loop: '{{ services }}'
     ```
-<!-- {% endhighlight %} -->
 
 2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
 
