@@ -202,151 +202,30 @@ Ansible allows two types of YAML syntax:
 
 ### Why?
 
-The legacy key=value syntax is used on the command line for adhoc commands. The use of this style is within playbooks and roles is a bad practice making playbooks harder to read and support. 
+The legacy key=value syntax is used on the command line for adhoc commands. The use of this style within playbooks and roles is a bad practice making playbooks harder to read and support. 
 
 Structured map style makes code more compact in terms of line length and that makes code more easy to read. Each module parameter is places on its own line making possible to comment parameters independently. YAML syntax highlighting works better for this format allowing key/value detection, constants highlighting etc.
 
-## Sudo
-Use the new `become` syntax when designating that a task needs to be run with `sudo` privileges
-
-```yaml
-#bad
-- name: 'template client.json to /etc/sensu/conf.d/'
-  template:
-    dest: '/etc/sensu/conf.d/client.json'
-    src: 'client.json.j2'
-  sudo: true
- 
-# good
-- name: 'template client.json to /etc/sensu/conf.d/'
-  template:
-    dest: '/etc/sensu/conf.d/client.json'
-    src: 'client.json.j2'
-  become: true
-```
-### Why?
-Using `sudo` was deprecated at [Ansible version 1.9.1](https://docs.ansible.com/ansible/latest/user_guide/become.html)
-
-## Hosts Declaration
-
-`host` sections should follow this general order:
-
-```yaml
-# host declaration
-# host options in alphabetical order
-# pre_tasks
-# roles
-# tasks
-
-# example
-- hosts: 'webservers'
-  remote_user: 'centos'
-  vars:
-    tomcat_state: 'started'
-  pre_tasks:
-    - name: 'set the timezone to America/Boise'
-      lineinfile:
-        dest: '/etc/environment'
-        line: 'TZ=America/Boise'
-        state: 'present'
-      become: true
-  roles:
-    - { role: 'tomcat', tags: 'tomcat' }
-  tasks:
-    - name: 'start the tomcat service'
-      service:
-        name: 'tomcat'
-        state: '{{ tomcat_state }}'
-```
-
-### Why?
-
-A proper definition for how to order these maps produces consistent and easily readable code.
-
-## Task Declaration
-
-A task should be defined in such a way that it follows this general order:
-
-```yaml
-# task name
-# tags
-# task map declaration (e.g. service:)
-# task parameters in alphabetical order (remember to always use multi-line map syntax)
-# loop operators (e.g. with_items)
-# task options in alphabetical order (e.g. become, ignore_errors, register)
-
-# example
-- name: 'create some ec2 instances'
-  tags: 'ec2'
-  ec2:
-    assign_public_ip: true
-    image: 'ami-c7d092f7'
-    instance_tags:
-      Name: '{{ item }}'
-    key_name: 'my_key'
-  with_items: '{{ instance_names }}'
-  ignore_errors: true
-  register: ec2_output
-  when: ansible_os_family == 'Darwin'
-```
-
-### Why?
-
-Similar to the hosts definition, having a well-defined style here helps us create consistent code.
-
-## Include Declaration
-
-For `include` statements, make sure to quote filenames and only use blank lines between `include` statements if they are multi-line (e.g. they have tags).
-
-```yaml
-# bad
-- include: other_file.yml
-
-- include: 'second_file.yml'
-
-- include: third_file.yml tags=third
-
-# good
-
-- include: 'other_file.yml'
-- include: 'second_file.yml'
-
-- include: 'third_file.yml'
-  tags: 'third'
-```
-
-### Why?
-
-This tends to be the most readable way to have `include` statements in your code.
-
-## Spacing
-
-You should have blank lines between two host blocks, between two task blocks, and between host and include blocks. When indenting, you should use 2 spaces to represent sub-maps, and multi-line maps should start with a `-`). For a more in-depth example of how spacing (and other things) should look, consult [style.yml](style.yml).
-
-### Why?
-
-This produces nice looking code that is easy to read.
-
 ## Variable Names
 
-Use `snake_case` for variable names in your scripts.
+Use `snake_case` for variable names:
 
 ```yaml
 # bad
-- name: 'set some facts'
+- name: set some facts
   set_fact:
-    myBoolean: true
+    myBoolean: True
     myint: 20
-    MY_STRING: 'test'
+    MY_STRING: test
 
 # good
-- name: 'set some facts'
+- name: set some facts
   set_fact:
-    my_boolean: true
+    my_boolean: True
     my_int: 20
-    my_string: 'test'
+    my_string: test
 ```
 
 ### Why?
 
-Ansible uses `snake_case` for module names so it makes sense to extend this convention to variable names.
+Ansible uses `snake_case` for module names and parameters so it makes sense to extend this convention to variable names to unify style.
