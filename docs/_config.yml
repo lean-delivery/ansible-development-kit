@@ -2,3 +2,4 @@ title: Ansible Development Kit
 remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 highlighter: rouge
+markdown: kramdown
