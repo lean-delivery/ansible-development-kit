@@ -11,10 +11,10 @@ permalink: /docs/ansible_style_guide
 
 This document defines code guidelines for Ansible roles included in lean-delivery project. These guidelines are provided for Ansible role authors and contributors to ensure that the code of Ansible roles included in the project is following the agreed conventions. Following these conventions makes code better in terms of readability and simplifies further support and development.
 
-## Table of contents
+# Table of contents
 {: .no_toc .text-delta }
 
-* TOC
+*  TOC
 {:toc}
 
 ## Practices
