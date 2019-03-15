@@ -4,9 +4,6 @@ title: Ansible Styleguide
 nav_order: 3
 has_children: true
 permalink: /docs/ansible_style_guide
-kramdown: 
-  toc_levels: 1..2
-# toc_levels: 1..2
 ---
 
 # Ansible Style Guide
@@ -97,27 +94,23 @@ Even though strings are the default type for YAML, syntax highlighting looks bet
 
 ## Long strings
 
-If you must write a long string, we use the "folded scalar" style and omit all special quoting. The only things you should avoid quoting are booleans (e.g. true/false), numbers (e.g. 42), and things referencing the local Ansible environemnt (e.g. boolean logic or names of variables we are assigning values to).
+If you write a long string containing whitespaces, it's preferrable to use the "folded scalar" style and omit all special quoting. You should break long string into several short ones to improve readability:
 
-```yaml
-# double quotes to escape characters
-- name 'print some text on two lines'
-  debug:
-    msg: "This text is on\ntwo lines"
+```yaml {% raw %}
+java_folder: >-
+  {{ (java_major_version|int <= 8)
+    | ternary(java_package + '1.' + java_major_version|string + '.0_' + java_minor_version|string,
+              java_package + '-'  + java_major_version|string + '.'   + java_minor_version|string) }} {% endraw %}
+```
 
-# folded scalar style
-- name: 'robot infos'
-  debug:
-    msg: >
-      Robot {{ item['robot_name'] }} is {{ item['status'] }} and in {{ item['az'] }}
-      availability zone with a {{ item['curiosity_quotient'] }} curiosity quotient.
-  with_items: robots
+If you need to preserve line breaks use the following approach:
 
-# folded scalar when the string has nested quotes already
-- name: 'print some text'
-  debug:
-    msg: >
-      “I haven’t the slightest idea,” said the Hatter.
+```yaml {% raw %}
+- name: "Warn on unsupported platform"
+  fail:
+    msg: |
+      This role does not support '{{ ansible_os_family }}' platform.
+        Please contact support@lean-delivery.com {% endraw %}
 ```
 
 ## Environment 

@@ -3,5 +3,5 @@ remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 highlighter: rouge
 markdown: kramdown
-kramdown: 
+kramdown:
   toc_levels: 1..2

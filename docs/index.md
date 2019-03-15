@@ -7,14 +7,6 @@ nav_order: 1
 # Ansible Development Kit
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-## Ansible Development Kit
-
 Ansible Development Kit is a collection of tools, libraries, and templates are based on Lean Delivery approach and community best practices for roles and playbooks development.
 
 ### Why this product?
