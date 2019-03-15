@@ -56,16 +56,14 @@ Single quotes are preferrable to double since they are shorter and require less 
       loop: '{{ services }}' {% endraw %}
 ```
 
-2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
+1. When your string requires escaping characters (e.g. using "\n" to represent a newline)
 
-{% highlight yaml %}
     ```yaml
     # double quotes to escape characters
     - name 'print text with two lines'
       debug:
         msg: "Line one\nLine two"
     ```
-{% endhighlight %}
 
 ### Why?
 
