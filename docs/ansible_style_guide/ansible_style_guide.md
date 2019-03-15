@@ -50,10 +50,10 @@ Single quotes are preferrable to double since they are shorter and require less 
     ```yaml
     - name: start all services
       service:
-        name: '{{ item["service_name"] }}''
+        name: '\{\{ item["service_name"] \}\}'
         state: started
         enabled: True
-      loop: '{{ services }}''
+      loop: '\{\{ services \}\}'
     ```
 
 2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
