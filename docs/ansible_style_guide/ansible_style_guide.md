@@ -3,10 +3,12 @@ layout: default
 title: Ansible Styleguide
 nav_order: 3
 has_children: true
-permalink: /docs/ui-components
+permalink: /docs/ansible-styleguide
 ---
 
 # Ansible Style Guide
+
+This document defines code guidelines for Ansible roles included in lean-delivery project. These guidelines are provided for Ansible role authors and contributors to ensure that the code of Ansible roles included in the project is following the agreed conventions. Following these conventions makes code better in terms of readability and simplifies further support and development.
 
 ## Practices
 
@@ -22,34 +24,11 @@ The script examples are inconsistent in style throughout the Ansible documentati
 
 ## Start of Files
 
-You should start your scripts with some comments explaining what the script's purpose does (and an example usage, if necessary), followed by `---` with blank lines around it, then followed by the rest of the script.
-
-```yaml
-#bad
-- name: 'Change s1m0n3's status'
-  service:
-    enabled: true
-    name: 's1m0ne'
-    state: '{{ state }}'
-  become: true
-  
-#good
-# Example usage: ansible-playbook -e state=started playbook.yml
-# This playbook changes the state of s1m0n3 the robot
-
----
-
-- name: 'Change s1m0n3's status'
-  service:
-    enabled: true
-    name: 's1m0ne'
-    state: '{{ state }}'
-  become: true
-```
+All YAML files (regardless of their association with Ansible or not) should begin with `---` to define the document start. 
 
 ### Why?
 
-This makes it easier to quickly find out the purpose/usage of a script, either by opening the file or using the `head` command.
+It's better processed by linters and parsers. It allows easily indicate start of new yaml objects and documents.
 
 ## End of Files
 
@@ -61,34 +40,39 @@ This is common Unix best practice, and avoids any prompt misalignment when print
 
 ## Quotes
 
-**We always quote strings** and prefer single quotes over double quotes. The only time you should use double quotes is when they are nested within single quotes (e.g. Jinja map reference), or when your string requires escaping characters (e.g. using "\n" to represent a newline). If you must write a long string, we use the "folded scalar" style and omit all special quoting. The only things you should avoid quoting are booleans (e.g. true/false), numbers (e.g. 42), and things referencing the local Ansible environemnt (e.g. boolean logic or names of variables we are assigning values to).
+**You should only quote strings when it is absolutely necessary** or required by YAML, and then use single quotes. 
+Single quotes are preferrable to double since they are shorter and require less efforts to support, especially for roles supporting Windows.
+
+### Double quotes should be used in the following cases:
+
+1. When they are nested within single quotes (e.g. Jinja map reference)
+
+    ```yaml
+    - name: start all services
+      service:
+        name: '{{ item["service_name"] }}'
+        state: started
+        enabled: True
+      loop: '{{ services }}'
+    ```
+
+2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
+
+    ```yaml
+    # double quotes to escape characters
+    - name 'print text with two lines'
+      debug:
+        msg: "Line one\nLine two"
+    ```
+### Why?
+
+Even though strings are the default type for YAML, syntax highlighting looks better when explicitly set types. This also helps troubleshoot malformed strings when they should be properly escaped to have the desired effect.
+
+## Long strings
+
+If you must write a long string, we use the "folded scalar" style and omit all special quoting. The only things you should avoid quoting are booleans (e.g. true/false), numbers (e.g. 42), and things referencing the local Ansible environemnt (e.g. boolean logic or names of variables we are assigning values to).
 
 ```yaml
-# bad
-- name: start robot named S1m0ne
-  service:
-    name: s1m0ne
-    state: started
-    enabled: true
-  become: true
-
-# good
-- name: 'start robot named S1m0ne'
-  service:
-    name: 's1m0ne'
-    state: 'started'
-    enabled: true
-  become: true
-
-# double quotes w/ nested single quotes
-- name: 'start all robots'
-  service:
-    name: '{{ item["robot_name"] }}''
-    state: 'started'
-    enabled: true
-  with_items: '{{ robots }}'
-  become: true
-
 # double quotes to escape characters
 - name 'print some text on two lines'
   debug:
@@ -107,34 +91,7 @@ This is common Unix best practice, and avoids any prompt misalignment when print
   debug:
     msg: >
       “I haven’t the slightest idea,” said the Hatter.
-
-# don't quote booleans/numbers
-- name: 'download google homepage'
-  get_url:
-    dest: '/tmp'
-    timeout: 60
-    url: 'https://google.com'
-    validate_certs: true
-
-# variables example 1
-- name: 'set a variable'
-  set_fact:
-    my_var: 'test'
-
-# variables example 2
-- name: 'print my_var'
-  debug:
-    var: my_var
-  when: ansible_os_family == 'Darwin'
-
-# variables example 3
-- name: 'set another variable'
-  set_fact:
-    my_second_var: '{{ my_var }}'
 ```
-### Why?
-
-Even though strings are the default type for YAML, syntax highlighting looks better when explicitly set types. This also helps troubleshoot malformed strings when they should be properly escaped to have the desired effect.
 
 ## Environment 
 
