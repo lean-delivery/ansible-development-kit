@@ -10,6 +10,8 @@ permalink: /docs/ansible_style_guide
 
 This document defines code guidelines for Ansible roles included in lean-delivery project. These guidelines are provided for Ansible role authors and contributors to ensure that the code of Ansible roles included in the project is following the agreed conventions. Following these conventions makes code better in terms of readability and simplifies further support and development.
 
+1.  TOC {:toc}
+
 ## Practices
 
 You should follow the [Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) defined by the Ansible documentation when developing playbooks.
@@ -48,21 +50,32 @@ Single quotes are preferrable to double since they are shorter and require less 
 1.  When they are nested within single quotes (e.g. Jinja map reference)
 
     ```yaml {% raw %}
-        - name: start all services
-          service:
-            name: '{{ item["service_name"] }}'
-            state: started
-            enabled: True
-          loop: '{{ services }}' {% endraw %}
+    - name: start all services
+      service:
+        name: '{{ item["service_name"] }}'
+        state: started
+        enabled: True
+      loop: '{{ services }}' {% endraw %}
     ```
 
 2.  When your string requires escaping characters (e.g. using "\n" to represent a newline)
 
     ```yaml
     # double quotes to escape characters
-    - name 'print text with two lines'
+    - name print text with two lines
       debug:
         msg: "Line one\nLine two"
+    ```
+
+3.  When you need to split long string without spaces to several lines:
+
+    ```yaml
+    # long string without spaces
+    - name Set plugin url 
+      set_fact:
+        plugin_jar: "https://github.com/checkstyle/\
+                      sonar-checkstyle/releases/download/4.17/\
+                      checkstyle-sonar-plugin-4.17.jar"
     ```
 
 ### Why?
