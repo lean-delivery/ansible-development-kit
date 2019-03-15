@@ -94,7 +94,7 @@ Even though strings are the default type for YAML, syntax highlighting looks bet
 
 ## Long strings
 
-If you write a long string containing whitespaces, it's preferrable to use the "folded scalar" style and omit all special quoting. You should break long string into several short ones to improve readability:
+If you write a long string containing whitespaces, it's preferrable to use the "Literal Block Scalar" style and omit all special quoting. Values can span multiple lines using `|` or `>`. Spanning multiple lines using a "Literal Block Scalar" (|) will include the newlines and any trailing spaces. Using a "Folded Block Scalar" (>) will fold newlines to spaces; it’s used to make what would otherwise be a very long line easier to read and edit:
 
 ```yaml {% raw %}
 java_folder: >-
@@ -106,107 +106,105 @@ java_folder: >-
 If you need to preserve line breaks use the following approach:
 
 ```yaml {% raw %}
-- name: "Warn on unsupported platform"
+- name: Warn on unsupported platform
   fail:
     msg: |
       This role does not support '{{ ansible_os_family }}' platform.
         Please contact support@lean-delivery.com {% endraw %}
 ```
 
-## Environment 
-
-When provisioning a server with environment variables add the environment variables to `/etc/environment` with lineinfile. Do this from the ansible role that is associated with the service or application that is being installed. For example, for Tomcat installation the `CATALINA_HOME` environment variable is often used to reference the folder that contains Tomcat and its associated webapps. 
-
-```yaml
-- name: 'add line CATALINA_HOME to /etc/environment'
-  lineinfile:
-    dest: '/etc/environment'
-    line: 'CATALINA_HOME={{ tomcat_home }}'
-    state: 'present'
-  sudo: true
-```
-
-### Why?
-Environment definition files are typically shared so blowing them away by templating them can cause problems. Having the specific environment variable included by `lineinfile` makes it easier to track which applications are dependent upon the environment variable.
-
 ## Booleans
+
+Ansible supports many different ways to specify a boolean value: `True/False`, `true/false`, `yes/no`, `1/0`. We prefer to avoid mixing of various styles and stick to one : `True/False`.
 
 ```yaml
 # bad
-- name: 'start sensu-client'
+- name: start nginx
   service:
-    name: 'sensu-client'
-    state: 'restarted'
-    enabled: 1
-  become: 'yes'
+    name: nginx
+    state: started
+    enabled: yes
+  become: yes
  
 # good
-- name: 'start sensu-client'
+- name: start nginx
   service:
-    name: 'sensu-client'
-    state: 'restarted'
-    enabled: true
-  become: true
+    name: nginx
+    state: started
+    enabled: True
+  become: True
 ```
 
 ### Why?
-There are many different ways to specify a boolean value in ansible, `True/False`, `true/false`, `yes/no`, `1/0`. While it is cute to see all those options we prefer to stick to one : `true/false`. The main reasoning behind this is that Java and JavaScript have similar designations for boolean values. 
+The main reasoning behind this is that Python have same convention for boolean values. 
 
-## Key value pairs
+## Colon spacing
 
 Use only one space after the colon when designating a key value pair
 
 ```yaml
 # bad
-- name : 'start sensu-client'
+- name : start nginx
   service:
-    name    : 'sensu-client'
-    state   : 'restarted'
-    enabled : true
-  become : true
+    name    : nginx
+    state   : started
+    enabled : True
+  become : True
 
 
 # good
-- name: 'start sensu-client'
+- name: start nginx
   service:
-    name: 'sensu-client'
-    state: 'restarted'
-    enabled: true
-  become: true
+    name: nginx
+    state: started
+    enabled: True
+  become: True
 ```
+
+### Why?
+
+It's easier to edit avoiding extra aligning efforts for colons.
+
+## Key-Value pairs
+
+Ansible allows two types of YAML syntax:
+* legacy key=value style
+* structured map style
 
 **Always use the map syntax,** regardless of how many pairs exist in the map.
 
 ```yaml
 # bad
-- name: 'create checks directory to make it easier to look at checks vs handlers'
-  file: 'path=/etc/sensu/conf.d/checks state=directory mode=0755 owner=sensu group=sensu'
-  become: true
+- name: Create configuration file with parameters
+  file: path=/etc/sensu/conf.d/checks state=directory mode=0755 owner=sensu group=sensu
+  become: True
   
-- name: 'copy check-memory.json to /etc/sensu/conf.d'
-  copy: 'dest=/etc/sensu/conf.d/checks/ src=checks/check-memory.json'
-  become: true
+- name: Copy configuration file
+  copy: dest=/etc/sensu/conf.d/checks/ src=checks/check-memory.json
+  become: True
   
 # good
-- name: 'create checks directory to make it easier to look at checks vs handlers'
+- name: Create configuration file with parameters
   file:
-    group: 'sensu'
-    mode: '0755'
-    owner: 'sensu'
-    path: '/etc/sensu/conf.d/checks'
-    state: 'directory'
-  become: true
+    path: /etc/sensu/conf.d/checks
+    state: directory
+    group: sensu
+    mode: 0755
+    owner: sensu
+  become: True
   
-- name: 'copy check-memory.json to /etc/sensu/conf.d'
+- name: Copy configuration file
   copy:
-    dest: '/etc/sensu/conf.d/checks/'
-    src: 'checks/check-memory.json'
-  become: true
+    dest: /etc/sensu/conf.d/checks/
+    src: checks/check-memory.json
+  become: True
 ```
 
 ### Why?
 
-It's easier to read and it's not hard to do. It reduces changeset collisions for version control.
+The legacy key=value syntax is used on the command line for adhoc commands. The use of this style is within playbooks and roles is a bad practice making playbooks harder to read and support. 
+
+Structured map style makes code more compact in terms of line length and that makes code more easy to read. Each module parameter is places on its own line making possible to comment parameters independently. YAML syntax highlighting works better for this format allowing key/value detection, constants highlighting etc.
 
 ## Sudo
 Use the new `become` syntax when designating that a task needs to be run with `sudo` privileges
