@@ -47,15 +47,13 @@ Single quotes are preferrable to double since they are shorter and require less 
 
 1. When they are nested within single quotes (e.g. Jinja map reference)
 
-```yaml
-{% raw %}
+```yaml {% raw %}
     - name: start all services
       service:
         name: '{{ item["service_name"] }}'
         state: started
         enabled: True
-      loop: '{{ services }}'
-{% endraw %}
+      loop: '{{ services }}' {% endraw %}
 ```
 
 2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
