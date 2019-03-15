@@ -3,7 +3,7 @@ layout: default
 title: Ansible Styleguide
 nav_order: 3
 has_children: true
-permalink: /docs/ansible-styleguide
+permalink: /docs/ansible_style_guide
 ---
 
 # Ansible Style Guide
