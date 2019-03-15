@@ -94,7 +94,7 @@ Even though strings are the default type for YAML, syntax highlighting looks bet
 
 ## Long strings
 
-If you write a long string containing whitespaces, it's preferrable to use the "Literal Block Scalar" style and omit all special quoting. Values can span multiple lines using `|` or `>`. Spanning multiple lines using a "Literal Block Scalar" (|) will include the newlines and any trailing spaces. Using a "Folded Block Scalar" (>) will fold newlines to spaces; it’s used to make what would otherwise be a very long line easier to read and edit:
+If you write a long string containing whitespaces, it's preferrable to use the "Literal Block Scalar" style and omit all special quoting. Values can span multiple lines using `|` or `>`. Spanning multiple lines using a "Literal Block Scalar" (`|`) will include the newlines and any trailing spaces. Using a "Folded Block Scalar" (`>`) will fold newlines to spaces; it’s used to make what would otherwise be a very long line easier to read and edit:
 
 ```yaml {% raw %}
 java_folder: >-
