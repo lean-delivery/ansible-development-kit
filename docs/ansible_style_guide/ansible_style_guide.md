@@ -201,6 +201,7 @@ Ansible allows two types of YAML syntax:
 ```
 
 ### Why?
+{: .no_toc }
 
 The legacy key=value syntax is used on the command line for adhoc commands. The use of this style within playbooks and roles is a bad practice making playbooks harder to read and support. 
 
@@ -227,5 +228,6 @@ Use `snake_case` for variable names:
 ```
 
 ### Why?
+{: .no_toc }
 
 Ansible uses `snake_case` for module names and parameters so it makes sense to extend this convention to variable names to unify style.
