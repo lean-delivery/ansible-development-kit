@@ -47,7 +47,8 @@ Single quotes are preferrable to double since they are shorter and require less 
 
 1. When they are nested within single quotes (e.g. Jinja map reference)
 
-    ```markdown
+{% highlight yaml %}
+    ```yaml
     - name: start all services
       service:
         name: '{{ item["service_name"] }}'
@@ -55,15 +56,19 @@ Single quotes are preferrable to double since they are shorter and require less 
         enabled: True
       loop: '{{ services }}'
     ```
+{% endhighlight %}
 
 2. When your string requires escaping characters (e.g. using "\n" to represent a newline)
 
-    ```markdown
+{% highlight yaml %}
+    ```yaml
     # double quotes to escape characters
     - name 'print text with two lines'
       debug:
         msg: "Line one\nLine two"
     ```
+{% endhighlight %}
+
 ### Why?
 
 Even though strings are the default type for YAML, syntax highlighting looks better when explicitly set types. This also helps troubleshoot malformed strings when they should be properly escaped to have the desired effect.
