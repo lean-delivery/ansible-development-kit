@@ -14,7 +14,7 @@ This document defines code guidelines for Ansible roles included in lean-deliver
 ## Table of contents
 {: .no_toc .text-delta }
 
-1.  TOC
+* TOC
 {:toc}
 
 ## Practices
