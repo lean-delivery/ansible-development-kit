@@ -4,6 +4,7 @@ title: Ansible Styleguide
 nav_order: 3
 has_children: true
 permalink: /docs/ansible_style_guide
+toc_levels: 1..2
 ---
 
 # Ansible Style Guide
