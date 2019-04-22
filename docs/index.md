@@ -9,7 +9,7 @@ nav_order: 1
 
 Ansible Development Kit is a collection of tools, libraries, and templates are based on Lean Delivery approach and community best practices for roles and playbooks development.
 
-### Why this product?
+## Why this product?
 
 Ansible Development Kit defines a common workflow for Ansible roles and playbooks development:
 
@@ -21,7 +21,7 @@ Ansible Development Kit defines a common workflow for Ansible roles and playbook
 - Continuous Integration components are already included using reconfigured templates. Just adopt and get value.
 - Broad set of open source tools. It is equal to internal licensed products.
 
-### What product provides?
+## What product provides?
 
 Ansible Development Kit provides:
 
@@ -31,3 +31,14 @@ Ansible Development Kit provides:
 - Integration with popular clouds. Amazon, Azure, Google Cloud Platform, EPAM Cloud.
 - Public and private hosting of CI process.
 - Template based on Cookiecutter framework which represents independent repository with logical and hierarchical structure, contains configuration and test assets to avoid starting development from scratch.
+
+## How to make your own?
+{: .no_toc }
+To organize your own solution based on Ansible Development Kit you need to perform the following:
+
+1.  Make new organization on GitHub or use already existing to store your repositories:
+https://github.com/organizations/new
+2.  Setup Ansible Galaxy integration with GitHub:
+https://galaxy.ansible.com/docs/contributing/importing.html
+3.  Setup Travis CI accordingly:
+https://docs.travis-ci.com/user/tutorial/
