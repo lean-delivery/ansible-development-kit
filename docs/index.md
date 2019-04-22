@@ -37,8 +37,22 @@ Ansible Development Kit provides:
 To organize your own solution based on Ansible Development Kit you need to perform the following:
 
 1.  Make new organization on GitHub or use already existing to store your repositories:
-https://github.com/organizations/new
+[https://github.com/organizations/new](https://github.com/organizations/new)
 2.  Setup Ansible Galaxy integration with GitHub:
-https://galaxy.ansible.com/docs/contributing/importing.html
+[https://galaxy.ansible.com/docs/contributing/importing.html](https://galaxy.ansible.com/docs/contributing/importing.html)
 3.  Setup Travis CI accordingly:
-https://docs.travis-ci.com/user/tutorial/
+[https://docs.travis-ci.com/user/tutorial/](https://docs.travis-ci.com/user/tutorial/)
+4.  Setup Gitlab CI accordingly:
+[https://docs.gitlab.com/ee/ci/ci_cd_for_external_repos/github_integration.html](https://docs.gitlab.com/ee/ci/ci_cd_for_external_repos/github_integration.html)
+5.  Setup your Gitlab runners if necessary:
+See [related Terraform module](https://github.com/lean-delivery/tf-module-aws-gitlab-runner) or [Gitlab-runner Ansible role](https://github.com/lean-delivery/ansible-role-gitlab-runner) and [related Dockerfile](https://github.com/lean-delivery/docker-ansible-ci).
+6.  Organize service accounts for your cloud tests.
+7.  Create you Cookiecutter templates:
+See [our one](https://github.com/lean-delivery/ansible-development-kit) for example.
+8.  Add Lint tests according to documentation:
+[Yamllint](https://yamllint.readthedocs.io/en/stable/)
+[Ansible Lint](https://docs.ansible.com/ansible-lint/)
+9.  Add Molecule and Testinfra tests according to documentation:
+[Molecule](https://molecule.readthedocs.io/en/stable/)
+[Testinfra](https://testinfra.readthedocs.io/en/latest/)
+10.  Start contributing.
