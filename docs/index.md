@@ -51,8 +51,10 @@ See [related Terraform module](https://github.com/lean-delivery/tf-module-aws-gi
 See [our one](https://github.com/lean-delivery/ansible-development-kit) for example.
 8.  Add Lint tests according to documentation:
 [Yamllint](https://yamllint.readthedocs.io/en/stable/)
+
 [Ansible Lint](https://docs.ansible.com/ansible-lint/)
 9.  Add Molecule and Testinfra tests according to documentation:
 [Molecule](https://molecule.readthedocs.io/en/stable/)
+
 [Testinfra](https://testinfra.readthedocs.io/en/latest/)
 10.  Start contributing.
