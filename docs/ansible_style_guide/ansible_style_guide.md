@@ -71,7 +71,7 @@ Single quotes are preferrable to double since they are shorter and require less 
       service:
         name: '{{ item["service_name"] }}'
         state: started
-        enabled: True
+        enabled: true
       loop: '{{ services }}' {% endraw %}
     ```
 
@@ -126,7 +126,7 @@ If you need to preserve line breaks use the following approach:
 
 ## Booleans
 
-Ansible supports many different ways to specify a boolean value: `True/False`, `true/false`, `yes/no`, `1/0`. We prefer to avoid mixing of various styles and stick to one : `True/False`.
+Ansible supports many different ways to specify a boolean value: `True/False`, `true/false`, `yes/no`, `1/0`. We prefer to avoid mixing of various styles and stick to one : `true/false`.
 
 ```yaml
 # bad
@@ -142,8 +142,8 @@ Ansible supports many different ways to specify a boolean value: `True/False`, `
   service:
     name: nginx
     state: started
-    enabled: True
-  become: True
+    enabled: true
+  become: true
 ```
 
 ### Why?
@@ -161,8 +161,8 @@ Use only one space after the colon when designating a key value pair
   service:
     name    : nginx
     state   : started
-    enabled : True
-  become : True
+    enabled : true
+  become : true
 
 
 # good
@@ -170,8 +170,8 @@ Use only one space after the colon when designating a key value pair
   service:
     name: nginx
     state: started
-    enabled: True
-  become: True
+    enabled: true
+  become: true
 ```
 
 ### Why?
@@ -192,11 +192,11 @@ Ansible allows two types of YAML syntax:
 # bad
 - name: Create configuration file with parameters
   file: path=/etc/sensu/conf.d/checks state=directory mode=0755 owner=sensu group=sensu
-  become: True
+  become: true
   
 - name: Copy configuration file
   copy: dest=/etc/sensu/conf.d/checks/ src=checks/check-memory.json
-  become: True
+  become: true
   
 # good
 - name: Create configuration file with parameters
@@ -206,13 +206,13 @@ Ansible allows two types of YAML syntax:
     group: sensu
     mode: 0755
     owner: sensu
-  become: True
+  become: true
   
 - name: Copy configuration file
   copy:
     dest: /etc/sensu/conf.d/checks/
     src: checks/check-memory.json
-  become: True
+  become: true
 ```
 
 ### Why?
@@ -232,14 +232,14 @@ Use `snake_case` for variable names:
 # bad
 - name: set some facts
   set_fact:
-    myBoolean: True
+    myBoolean: true
     myint: 20
     MY_STRING: test
 
 # good
 - name: set some facts
   set_fact:
-    my_boolean: True
+    my_boolean: true
     my_int: 20
     my_string: test
 ```

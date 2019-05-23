@@ -31,7 +31,7 @@ platforms:
       - debian_family
 provisioner:
   name: ansible
-  # log: True
+  # log: true
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
 scenario:
