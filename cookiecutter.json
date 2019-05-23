@@ -2,7 +2,7 @@
     "role_name": "default_role",
     "license" : ["Apache", "MIT", "BSD-3", "GPLv3"],
     "author_name" : "Lean Delivery Team <team@lean-delivery.com>",
-    "docker_privileged": "True",
+    "docker_privileged": "true",
     "dependency_name": "galaxy",
     "lint_name": "yamllint",
     "provisioner_name": "ansible",

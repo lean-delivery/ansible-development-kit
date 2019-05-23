@@ -16,7 +16,7 @@ platforms:
     aws_region: {{ cookiecutter.aws_region }}
     instance_type: {{ cookiecutter.instance_type }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
-    assign_public_ip: False
+    assign_public_ip: false
     spot_price: 0.14
     aws_sec_group:
       - default
@@ -26,13 +26,13 @@ platforms:
 {% raw -%}
 provisioner:
   name: ansible
-  log: False
+  log: false
   connection_options:
     ansible_connection: winrm
   inventory:
     group_vars:
       windows:
-        ansible_password: "{{ lookup('env', 'WINRM_ADMIN_PWD') | default('M0leCule123!', True) }}"
+        ansible_password: "{{ lookup('env', 'WINRM_ADMIN_PWD') | default('M0leCule123!', true) }}"
         ansible_winrm_transport: credssp
         ansible_winrm_server_cert_validation: ignore
 {%- endraw %}
