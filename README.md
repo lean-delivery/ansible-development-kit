@@ -1,5 +1,8 @@
 ansible-development-kit
 =========
+[![License](https://img.shields.io/badge/license-Apache-green.svg?style=flat)](https://raw.githubusercontent.com/lean-delivery/ansible-development-kit/master/LICENSE)
+[![Build Status](https://travis-ci.org/lean-delivery/ansible-development-kit.svg?branch=master)](https://travis-ci.org/lean-delivery/ansible-development-kit)
+[![Build Status](https://gitlab.com/lean-delivery/ansible-development-kit/badges/master/build.svg)](https://gitlab.com/lean-delivery/ansible-development-kit/pipelines)
 
 ## How to use:
 

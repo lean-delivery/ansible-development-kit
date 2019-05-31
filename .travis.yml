@@ -21,5 +21,6 @@ install:
 script:
   - cookiecutter --no-input .
   - cd ansible-role-default_role
+  - yamllint . -c .yamllint
   - ansible-lint . -c .ansible-lint
   - molecule test
