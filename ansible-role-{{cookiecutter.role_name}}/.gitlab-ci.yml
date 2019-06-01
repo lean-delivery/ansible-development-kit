@@ -42,14 +42,14 @@ AWS {{ cookiecutter.role_name }}:
   tags:
     - aws
 
-# AWS Windows {{ cookiecutter.role_name }}:
-#   variables:
-#     AWS_REGION: {{ cookiecutter.aws_region }}
-#   stage: deployment test
-#   script:
-#     - molecule test -s cloud-aws-windows
-#   tags:
-#     - aws
+AWS Windows {{ cookiecutter.role_name }}:
+  variables:
+    AWS_REGION: {{ cookiecutter.aws_region }}
+  stage: deployment test
+  script:
+    - molecule test -s cloud-aws-windows
+  tags:
+    - aws
 
 EPC {{ cookiecutter.role_name }}:
   variables:
