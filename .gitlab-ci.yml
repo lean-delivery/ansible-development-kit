@@ -6,6 +6,7 @@ stages:
 
 before_script:
   - ansible --version
+  - ansible-lint --version
   - molecule --version
 
 variables:
