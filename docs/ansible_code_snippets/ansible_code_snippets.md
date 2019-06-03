@@ -3,7 +3,7 @@ layout: default
 title: Ansible Code Snippets
 nav_order: 3
 has_children: false
-permalink: /docs/ansible_style_guide
+permalink: /docs/ansible_code_snippets
 ---
 
 # Ansible Code Snippets
