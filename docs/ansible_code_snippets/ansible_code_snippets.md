@@ -50,7 +50,7 @@ There are different ways to handle these issues both in the same playbook or pla
     - '{{ ansible_service_mgr }}.yml'
     - systemv.yml
   loop_control:
-    loop_var: service_manager
+    loop_var: service_manager {% endraw %}
 ```
 
 ### Tasks Separation
@@ -74,7 +74,7 @@ There are different ways to handle these issues both in the same playbook or pla
     - '{{ ansible_os_family }}.yml'
     - not_supported.yml
   loop_control:
-    loop_var: platform_tasks
+    loop_var: platform_tasks {% endraw %}
 ```
 
 ### Why?
@@ -101,7 +101,7 @@ The way of tasks and variables separation using dynamic includes is more flexibl
     state: present
   register: installed_packages
   until: installed_packages is succeeded
-  become: true
+  become: true {% endraw %}
 ```
 
 ---
@@ -138,7 +138,7 @@ The way of tasks and variables separation using dynamic includes is more flexibl
     state: present
   when:
     - ansible_selinux.status == "enabled"
-    - ansible_selinux.mode != "disabled" 
+    - ansible_selinux.mode != "disabled" {% endraw %}
 ```
 
 ---
