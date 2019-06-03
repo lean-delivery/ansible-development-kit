@@ -62,9 +62,9 @@ There are different ways to handle these issues both in the same playbook or pla
     path: '{{ apache_dir }}'
     owner: '{{ web_server_user }}'
     group: '{{ web_server_group }}'
-    recurse: True
+    recurse: true
     state: directory
-  become: True
+  become: true
   when: ansible_os_family == 'RedHat'
  
 # good
@@ -81,6 +81,65 @@ There are different ways to handle these issues both in the same playbook or pla
 {: .no_toc }
 
 The way of tasks and variables separation using dynamic includes is more flexible and it's easier to support. For example, to add new OS support you just need to put an additional file into Ansible role with corresponding name and content without changing the exact code of Ansible role or playbook. Thus avoid separation of code and variables by using `when` conditionals in playbooks.
+
+---
+
+## Install requirements
+
+```yaml {% raw %}
+- name: Install requirements
+  package:
+    name: '{{ requirements }}'
+    state: present
+  register: installed_packages
+  until: installed_packages is succeeded
+  become: true
+ 
+- name: Install required packages
+  package:
+    name: '{{ packages_base | union(packages_additional) | unique }}'
+    state: present
+  register: installed_packages
+  until: installed_packages is succeeded
+  become: true
+```
+
+---
+
+## Selinux support
+
+```yaml {% raw %}
+---
+- name: install ansible selinux support library
+  become: true
+  package:
+    name: libselinux-python
+    state: present
+  register: installed_package
+  until: installed_package is succeeded
+ 
+- name: Install ansible selinux configure libraries
+  become: true
+  package:
+    name:
+      - policycoreutils-python
+      - libsemanage-python
+    state: present
+  register: installed_package
+  until: installed_package is succeeded
+  when: ansible_selinux.status == "enabled"
+ 
+- name: Enable connections to HTTP port
+  become: true
+  seport:
+    ports: "{{ selinux_ports }}"
+    proto: tcp
+    setype: http_port_t
+    state: present
+  when:
+    - ansible_selinux.status == "enabled"
+    - ansible_selinux.mode != "disabled" 
+```
 
 ---
 
