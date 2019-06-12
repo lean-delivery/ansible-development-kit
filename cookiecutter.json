@@ -15,7 +15,7 @@
     "issue_tracker_url": "https://github.com/lean-delivery/ansible-role-{{ cookiecutter.role_name }}/issues",
     "galaxy_tags": "[development, system]",
     "platforms":"[{name: [EL], versions: [7]}]",
-    "vpc_subnet_id": "subnet-05a2ef2b767afec50",
+    "vpc_subnet_id": "subnet-0f2b9cd66faea38af",
     "aws_region": "us-east-1",
     "epc_region": "EPAM-BY2",
     "copyright_year": "2019",
