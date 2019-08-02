@@ -9,7 +9,7 @@
     "provisioner_lint_name": "ansible-lint",
     "verifier_name": "testinfra",
     "verifier_lint_name": "flake8",
-    "min_ansible_version": "2.7",
+    "min_ansible_version": "2.8",
     "company_name": "EPAM Systems",
     "role_description": "Yet Another Ansible Role From Lean Delivery",
     "issue_tracker_url": "https://github.com/lean-delivery/ansible-role-{{ cookiecutter.role_name }}/issues",
@@ -29,5 +29,7 @@
     "image_windows2016": "ami-00a20f508263efd30",
     "image_windows2019": "ami-0477b9335a5a75438",
     "instance_type": "m5.large",
-    "spot_price": "0.04"
+    "spot_price": "0.04",
+    "linux_tests": "true",
+    "windows_tests": "true"
 }

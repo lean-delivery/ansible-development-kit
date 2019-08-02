@@ -1,5 +1,9 @@
 ---
 # Run all tests
+default:
+  image:
+    name: leandelivery/docker-ansible-ci:ansible-{{ cookiecutter.min_ansible_version }}
+
 stages:
   - lint
   - deployment test
@@ -39,15 +43,6 @@ AWS {{ cookiecutter.role_name }}:
   stage: deployment test
   script:
     - molecule test -s cloud-aws-direct
-  tags:
-    - aws
-
-AWS Windows {{ cookiecutter.role_name }}:
-  variables:
-    AWS_REGION: {{ cookiecutter.aws_region }}
-  stage: deployment test
-  script:
-    - molecule test -s cloud-aws-windows
   tags:
     - aws
 

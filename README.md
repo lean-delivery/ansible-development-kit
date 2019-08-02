@@ -47,6 +47,15 @@ default_context:
   role_name: example
 ```
 
+To switch betweens Linux and Windows molecule tests add this variables to `.cookiecutter.yml`:
+```yaml
+---
+default_context:
+  role_name: example
+  linux_tests: "true"
+  windows_tests: "false"
+```
+
 and run cookiecutter the following way:
 
 cookiecutter https://github.com/lean-delivery/ansible-development-kit --output-dir .. --overwrite-if-exists --config-file .cookiecutter.yml --no-input

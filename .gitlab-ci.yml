@@ -26,6 +26,15 @@ Lint:
   tags:
     - aws
 
+Docker role from cookiecutter test:
+  stage: deployment test
+  script:
+    - cookiecutter -f --no-input .
+    - cd ansible-role-default_role
+    - molecule test -s default
+  tags:
+    - aws
+
 AWS role from cookiecutter test:
   variables:
     AWS_REGION: us-east-1
@@ -35,18 +44,6 @@ AWS role from cookiecutter test:
     - cd ansible-role-default_role
     - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
     - molecule test -s cloud-aws-direct
-  tags:
-    - aws
-
-AWS Windows role from cookiecutter test:
-  variables:
-    AWS_REGION: us-east-1
-  stage: deployment test
-  script:
-    - cookiecutter -f --no-input .
-    - cd ansible-role-default_role
-    - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
-    - molecule test -s cloud-aws-windows
   tags:
     - aws
 
