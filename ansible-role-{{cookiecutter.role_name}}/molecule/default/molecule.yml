@@ -34,12 +34,14 @@ provisioner:
   # log: true
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks,timer
+  playbooks:
+    verify: ../resources/tests/verify.yml
 scenario:
   name: default
 verifier:
   name: {{ cookiecutter.verifier_name }}
-  options:
-    verbose: true
-  directory: ../resources/tests/
   lint:
     name: {{ cookiecutter.verifier_lint_name }}

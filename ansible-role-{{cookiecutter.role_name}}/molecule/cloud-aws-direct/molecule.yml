@@ -90,28 +90,28 @@ platforms:
 
 {%- if cookiecutter.windows_tests == "true" %}
   - name: test-aws-Windows2016-{{ cookiecutter.role_name }}
-    aws_image_id: {{ cookiecutter.image_windows2016 }}
+    image_id: {{ cookiecutter.image_windows2016 }}
     platform: windows2016core
-    aws_region: {{ cookiecutter.aws_region }}
+    region: {{ cookiecutter.aws_region }}
     instance_type: {{ cookiecutter.instance_type }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
     spot_price: 0.14
-    aws_sec_group:
+    security_group_name:
       - default
     wait_timeout: 1800
     groups:
       - windows
 
   - name: test-aws-Windows2019-{{ cookiecutter.role_name }}
-    aws_image_id: {{ cookiecutter.image_windows2019 }}
+    image_id: {{ cookiecutter.image_windows2019 }}
     platform: windows2019core
-    aws_region: {{ cookiecutter.aws_region }}
+    region: {{ cookiecutter.aws_region }}
     instance_type: {{ cookiecutter.instance_type }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
     spot_price: 0.14
-    aws_sec_group:
+    security_group_name:
       - default
     wait_timeout: 1800
     groups:
@@ -137,14 +137,12 @@ provisioner:
     create: ../resources/provisioning/AWS/create.yml
     prepare: ../resources/provisioning/AWS/prepare.yml
     destroy: ../resources/provisioning/AWS/destroy.yml
+    verify: ../resources/tests/verify.yml
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
 scenario:
   name: cloud-aws-direct
 verifier:
   name: {{ cookiecutter.verifier_name }}
-  options:
-    verbose: true
-  # directory: ../resources/tests/
   lint:
     name: {{ cookiecutter.verifier_lint_name }}
