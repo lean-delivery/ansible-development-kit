@@ -86,6 +86,36 @@ platforms:
     ssh_user: admin
     groups:
       - debian_family
+
+  - name: test-aws-Amazon-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_amazon }}
+    platform: amazon
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: false
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: ec2-user
+    groups:
+      - rhel_family
+
+  - name: test-aws-Amazon2-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_amazon2 }}
+    platform: amazon2
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: false
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: ec2-user
+    groups:
+      - rhel_family
 {% endif -%}
 
 {%- if cookiecutter.windows_tests == "true" %}

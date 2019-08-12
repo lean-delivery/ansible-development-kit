@@ -26,6 +26,8 @@
     "image_ubuntu18": "ami-012fd5eb46f56731f",
     "image_debian9": "ami-003f19e0e687de1cd",
     "image_debian8": "ami-b14ba7a7",
+    "image_amazon": "ami-035b3c7efe6d061d5",
+    "image_amazon2": "ami-0b898040803850657",
     "image_windows2016": "ami-00a20f508263efd30",
     "image_windows2019": "ami-0477b9335a5a75438",
     "instance_type": "m5.large",
