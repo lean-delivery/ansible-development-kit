@@ -31,7 +31,7 @@ platforms:
       - debian_family
 provisioner:
   name: ansible
-  # log: true
+  log: true
   lint:
     name: {{ cookiecutter.provisioner_lint_name }}
   config_options:
