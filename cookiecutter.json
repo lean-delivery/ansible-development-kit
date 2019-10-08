@@ -33,5 +33,11 @@
     "instance_type": "m5.large",
     "spot_price": "0.04",
     "linux_tests": "true",
-    "windows_tests": "true"
+    "windows_tests": "true",
+    "az_location": "northeurope",
+    "az_resource_group_name": "epm-ldi",
+    "az_virtual_network_name": "epm-ldi-northeurope-vnet",
+    "az_subnet_name": "epm-ldi-northeurope-subnet",
+    "az_network_security_group": "epm-ldi-northeurope-sg",
+    "az_vm_size": "Standard_B2ms"
 }

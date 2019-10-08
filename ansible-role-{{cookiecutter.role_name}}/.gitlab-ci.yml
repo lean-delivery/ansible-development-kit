@@ -46,6 +46,13 @@ AWS {{ cookiecutter.role_name }}:
   tags:
     - aws
 
+AZURE {{ cookiecutter.role_name }}:
+  stage: deployment test
+  script:
+    - molecule test -s cloud-azure-direct
+  tags:
+    - azure
+
 EPC {{ cookiecutter.role_name }}:
   variables:
     EPC_REGION: {{ cookiecutter.epc_region }}
