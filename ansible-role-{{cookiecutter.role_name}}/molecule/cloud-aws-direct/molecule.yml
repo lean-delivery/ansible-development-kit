@@ -12,6 +12,21 @@ lint:
 platforms:
 
 {%- if cookiecutter.linux_tests == "true" %}
+  - name: test-aws-centos8-{{ cookiecutter.role_name }}
+    image: {{ cookiecutter.image_centos8 }}
+    platform: centos8
+    instance_type: {{ cookiecutter.instance_type }}
+    region: {{ cookiecutter.aws_region }}
+    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+    assign_public_ip: false
+    spot_price: {{ cookiecutter.spot_price }}
+    security_group_name:
+      - default
+    wait_timeout: 1800
+    ssh_user: centos
+    groups:
+      - rhel_family
+
   - name: test-aws-centos7-{{ cookiecutter.role_name }}
     image: {{ cookiecutter.image_centos7 }}
     platform: centos7

@@ -20,6 +20,7 @@
     "epc_region": "EPAM-BY2",
     "copyright_year": "2019",
     "copyright_owner": "EPAM Systems",
+    "image_centos8": "ami-0ed2ad9dc845b42b6",
     "image_centos7": "ami-9887c6e7",
     "image_centos6": "ami-1585c46a",
     "image_ubuntu16": "ami-09677e0a6b14905b0",
