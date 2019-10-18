@@ -40,5 +40,5 @@
     "az_virtual_network_name": "epm-ldi-northeurope-vnet",
     "az_subnet_name": "epm-ldi-northeurope-subnet",
     "az_network_security_group": "epm-ldi-northeurope-sg",
-    "az_vm_size": "Standard_B2ms"
+    "az_vm_size": "Standard_D2s_v3"
 }

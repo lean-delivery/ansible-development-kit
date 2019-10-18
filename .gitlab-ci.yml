@@ -52,7 +52,7 @@ AZURE role from cookiecutter test:
   script:
     - cookiecutter -f --no-input .
     - cd ansible-role-default_role
-    - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+    - git clone -b feature/azure-low-priority-vms https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
     - molecule test -s cloud-azure-direct
   tags:
     - azure
