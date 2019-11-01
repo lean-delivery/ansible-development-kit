@@ -24,7 +24,7 @@ before_install:
   - git clone https://github.com/lean-delivery/ansible-lint-rules.git ~/ansible-lint-rules
 
 install:
-  - pip3 install --upgrade ANSIBLE_VERSION  docker
+  - pip3 install --upgrade ansible==ANSIBLE_VERSION docker
   - pip3 install molecule==2.22
   - pip3 install git+https://github.com/ansible/ansible-lint.git
   - ansible --version
