@@ -8,6 +8,7 @@ before_script:
   - ansible --version
   - ansible-lint --version
   - molecule --version
+  - terraform --version
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
@@ -52,7 +53,7 @@ AZURE role from cookiecutter test:
   script:
     - cookiecutter -f --no-input .
     - cd ansible-role-default_role
-    - git clone -b feature/azure-low-priority-vms https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
+    - git clone https://github.com/lean-delivery/ansible-molecule-drivers.git molecule/resources/provisioning
     - molecule test -s cloud-azure-direct
   tags:
     - azure
