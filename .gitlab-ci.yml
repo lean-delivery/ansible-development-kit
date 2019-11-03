@@ -25,7 +25,7 @@ Lint:
   after_script:
     - rm -rf ~/ansible-lint-rules
   tags:
-    - aws
+    - lint
 
 Docker role from cookiecutter test:
   stage: deployment test
@@ -58,7 +58,7 @@ AZURE role from cookiecutter test:
   tags:
     - azure
 
-EPC role from cookiecutter test:
+.EPC role from cookiecutter test:
   variables:
     EPC_REGION: EPAM-BY2
   stage: deployment test
