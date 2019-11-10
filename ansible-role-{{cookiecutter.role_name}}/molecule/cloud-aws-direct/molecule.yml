@@ -42,20 +42,20 @@ platforms:
     groups:
       - rhel_family
 
-  - name: test-aws-centos6-{{ cookiecutter.role_name }}
-    image: {{ cookiecutter.image_centos6 }}
-    platform: centos6
-    instance_type: m4.large
-    region: {{ cookiecutter.aws_region }}
-    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
-    assign_public_ip: false
-    spot_price: {{ cookiecutter.spot_price }}
-    security_group_name:
-      - default
-    wait_timeout: 1800
-    ssh_user: centos
-    groups:
-     - rhel_family
+#  - name: test-aws-centos6-{{ cookiecutter.role_name }}
+#    image: {{ cookiecutter.image_centos6 }}
+#    platform: centos6
+#    instance_type: m4.large
+#    region: {{ cookiecutter.aws_region }}
+#    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
+#    assign_public_ip: false
+#    spot_price: {{ cookiecutter.spot_price }}
+#    security_group_name:
+#      - default
+#    wait_timeout: 1800
+#    ssh_user: centos
+#    groups:
+#     - rhel_family
 
   - name: test-aws-ubuntu16-{{ cookiecutter.role_name }}
     image: {{ cookiecutter.image_ubuntu16 }}
