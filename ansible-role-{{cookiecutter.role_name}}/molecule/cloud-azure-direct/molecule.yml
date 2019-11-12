@@ -14,6 +14,7 @@ platforms:
 {%- if cookiecutter.linux_tests == "true" %}
   - name: test-azure-centos7-{{ cookiecutter.role_name }}
     platform: centos7
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -25,6 +26,7 @@ platforms:
 
   - name: test-azure-centos6-{{ cookiecutter.role_name }}
     platform: centos6
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -36,6 +38,7 @@ platforms:
 
   - name: test-azure-ubuntu16-{{ cookiecutter.role_name }}
     platform: ubuntu16
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -47,6 +50,7 @@ platforms:
 
   - name: test-azure-ubuntu18-{{ cookiecutter.role_name }}
     platform: ubuntu18
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -58,6 +62,7 @@ platforms:
 
   - name: test-azure-Debian9-{{ cookiecutter.role_name }}
     platform: debian9
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -71,6 +76,7 @@ platforms:
 {%- if cookiecutter.windows_tests == "true" %}
   - name: test-azure-Windows2016-{{ cookiecutter.role_name }}
     platform: windows2016core
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -82,6 +88,7 @@ platforms:
 
   - name: test-azure-Windows2019-{{ cookiecutter.role_name }}
     platform: windows2019core
+    assign_public_ip: false
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
