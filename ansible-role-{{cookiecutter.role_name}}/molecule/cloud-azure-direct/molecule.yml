@@ -14,7 +14,7 @@ platforms:
 {%- if cookiecutter.linux_tests == "true" %}
   - name: test-azure-centos7-{{ cookiecutter.role_name }}
     platform: centos7
-    assign_public_ip: false
+    assign_public_ip: true
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
@@ -88,7 +88,7 @@ platforms:
 
   - name: test-azure-Windows2019-{{ cookiecutter.role_name }}
     platform: windows2019core
-    assign_public_ip: false
+    assign_public_ip: true
     vm_size: {{ cookiecutter.az_vm_size }}
     az_location: {{ cookiecutter.az_location }}
     az_resource_group_name: {{ cookiecutter.az_resource_group_name }}
