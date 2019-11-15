@@ -8,7 +8,6 @@ before_script:
   - ansible --version
   - ansible-lint --version
   - molecule --version
-  - terraform --version
 
 variables:
   GET_SOURCES_ATTEMPTS: "5"
