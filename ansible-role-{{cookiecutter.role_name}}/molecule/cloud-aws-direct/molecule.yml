@@ -16,6 +16,9 @@ platforms:
     image: {{ cookiecutter.image_centos8 }}
     platform: centos8
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -31,6 +34,9 @@ platforms:
     image: {{ cookiecutter.image_centos7 }}
     platform: centos7
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -46,6 +52,9 @@ platforms:
 #    image: {{ cookiecutter.image_centos6 }}
 #    platform: centos6
 #    instance_type: m4.large
+#{% if cookiecutter.customize_vol_size_linux == "true" %}
+#    volume_size: {{ cookiecutter.volume_size_linux }}
+#{% endif %}
 #    region: {{ cookiecutter.aws_region }}
 #    vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
 #    assign_public_ip: false
@@ -61,6 +70,9 @@ platforms:
     image: {{ cookiecutter.image_ubuntu16 }}
     platform: ubuntu16
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -76,6 +88,9 @@ platforms:
     image: {{ cookiecutter.image_ubuntu18 }}
     platform: ubuntu18
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -91,6 +106,9 @@ platforms:
     image: {{ cookiecutter.image_debian9 }}
     platform: debian9
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -106,6 +124,9 @@ platforms:
     image: {{ cookiecutter.image_amazon }}
     platform: amazon
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -121,6 +142,9 @@ platforms:
     image: {{ cookiecutter.image_amazon2 }}
     platform: amazon2
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_linux == "true" %}
+    volume_size: {{ cookiecutter.volume_size_linux }}
+{% endif %}
     region: {{ cookiecutter.aws_region }}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
@@ -139,6 +163,9 @@ platforms:
     platform: windows2016core
     region: {{ cookiecutter.aws_region }}
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_windows == "true" %}
+    volume_size: {{ cookiecutter.volume_size_windows }}
+{% endif %}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
     spot_price: 0.14
@@ -153,6 +180,9 @@ platforms:
     platform: windows2019core
     region: {{ cookiecutter.aws_region }}
     instance_type: {{ cookiecutter.instance_type }}
+{% if cookiecutter.customize_vol_size_windows == "true" %}
+    volume_size: {{ cookiecutter.volume_size_windows }}
+{% endif %}
     vpc_subnet_id: {{ cookiecutter.vpc_subnet_id }}
     assign_public_ip: false
     spot_price: 0.14

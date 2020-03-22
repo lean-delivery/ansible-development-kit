@@ -56,6 +56,17 @@ default_context:
   windows_tests: "false"
 ```
 
+To increase root volume size for Linux and Windows platforms in AWS add this variables to `.cookiecutter.yml`:
+```yaml
+---
+default_context:
+  role_name: example
+  customize_vol_size_linux: "true"
+  volume_size_linux: 10
+  customize_vol_size_windows: "true"
+  volume_size_windows: 32
+```
+
 and run cookiecutter the following way:
 
 cookiecutter https://github.com/lean-delivery/ansible-development-kit --output-dir .. --overwrite-if-exists --config-file .cookiecutter.yml --no-input
