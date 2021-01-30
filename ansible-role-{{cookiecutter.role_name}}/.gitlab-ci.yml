@@ -1,5 +1,4 @@
 ---
-# Run all tests
 # default:
 #   image:
 #     name: leandelivery/docker-ansible-ci:ansible-{{ cookiecutter.min_ansible_version }}
